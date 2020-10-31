@@ -9,3 +9,13 @@ ADD CONSTRAINT `product_product_type_fk`
   REFERENCES `black-food-db`.`product_types` (`id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
+
+
+  ALTER TABLE `black-food-db`.`products` 
+DROP FOREIGN KEY `product_product_type_fk`;
+ALTER TABLE `black-food-db`.`products` 
+CHANGE COLUMN `productTypeId` `product_type_id` INT NOT NULL ;
+ALTER TABLE `black-food-db`.`products` 
+ADD CONSTRAINT `product_product_type_fk`
+  FOREIGN KEY (`product_type_id`)
+  REFERENCES `black-food-db`.`product_types` (`id`);
